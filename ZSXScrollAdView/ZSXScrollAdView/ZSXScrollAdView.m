@@ -29,6 +29,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.timeInterval = 1;
+        self.scrollAnimateDuration = 0.3;
         self.timeNeed = YES;
         self.pageControlNeed = YES;
         self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -39,6 +40,7 @@
 - (instancetype)initWithFrame:(CGRect)frame images:(NSArray<UIImage *> *)images {
     if (self = [super initWithFrame:frame]) {
         self.timeInterval = 1;
+        self.scrollAnimateDuration = 0.3;
         self.timeNeed = YES;
         self.pageControlNeed = YES;
         self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -75,7 +77,7 @@
 - (void)imageScroll {
     self.currentPage++;
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:self.scrollAnimateDuration animations:^{
         self.scrollView.contentOffset = CGPointMake(self.frame.size.width*(_currentPage+1), 0);
     }];
     if (self.currentPage == self.images.count) {
